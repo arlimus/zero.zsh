@@ -20,7 +20,7 @@ function is_repo_hg {
 
 function prompt_char {
     # prompt color (root/user)
-    echo -n "%{%(#~$fg_bold[red]~\033[38;05;012;1m)%}"
+    echo -n "%{%(#~$fg[red]~\033[38;05;075m)%}"
     
     # promp character for git (git rev-parse is nice and fast, so it's fine)
     is_repo_git && echo '±' && return
@@ -93,7 +93,7 @@ function git_time_since_commit() {
         # Only proceed if there is actually a commit.
         if [[ $(git log 2>&1 > /dev/null | grep -c "^fatal: bad default revision") == 0 ]]; then
             # Get the last commit.
-            last_commit=`git log --pretty=format:'%at' -1 2> /dev/null`
+            last_commit=`git log --pretty=format:'%at' -1 2>/dev/null`
             now=`date +%s`
             seconds_since_last_commit=$((now-last_commit))
 
