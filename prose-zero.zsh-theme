@@ -2,13 +2,32 @@ if [ "x$OH_MY_ZSH_HG" = "x" ]; then
     OH_MY_ZSH_HG="hg"
 fi
 
+function owned_by {
+    desired="$1"
+    path="$2"
+    [ -d "$path/$desired" ] && return 0
+    [ "$(/usr/bin/realpath $path)" = "/" ] && return 127
+    owned_by "../$path" "$desired"
+}
+
+function is_repo_git {
+    git rev-parse 2>/dev/null
+}
+
+function is_repo_hg {
+    owned_by ".hg" "."
+}
+
 function prompt_char {
     # prompt color (root/user)
     echo -n "%{%(#~$fg_bold[red]~\033[38;05;012;1m)%}"
     
-    # prompt character based on repo (git/hg) and user (root/user)
-    [ -d ".git" ] && echo '±' && return
-    [ -d ".hg" ] && echo '☿' && return
+    # promp character for git (git rev-parse is nice and fast, so it's fine)
+    is_repo_git && echo '±' && return
+    # hg as command to test is too slow... do the pragmatic thing instead
+    is_repo_hg && echo '☿' && return
+
+    # prompt char for user (root/user)
     echo '%(#~#~∅)'
 }
 
@@ -33,7 +52,8 @@ function prompt_prefix {
 }
 
 function repo {
-  [ -d ".git" -o -d ".hg" ] && echo "$(hg_prompt_info)$(git_time_since_commit)$(git_prompt_info) "
+    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_info) "
+    is_repo_hg && echo "$(hg_prompt_info)"
 }
 
 #PROMPT='
@@ -68,8 +88,7 @@ RPROMPT='${return_status}%(?,, %?)%{$reset_color%}'
 # Determine the time since last commit. If branch is clean,
 # use a neutral color, otherwise colors will vary according to time.
 function git_time_since_commit() {
-    [ ! -d ".git" ] && return
-    if git rev-parse --git-dir > /dev/null 2>&1; then
+    if git rev-parse > /dev/null 2>&1; then
         echo -n "$ZSH_THEME_GIT_TIME_SINCE_COMMIT_PREFIX"
         # Only proceed if there is actually a commit.
         if [[ $(git log 2>&1 > /dev/null | grep -c "^fatal: bad default revision") == 0 ]]; then
