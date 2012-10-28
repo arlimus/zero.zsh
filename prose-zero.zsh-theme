@@ -90,10 +90,12 @@ RPROMPT='${return_status}%(?,, %?)%{$reset_color%}'
 function git_time_since_commit() {
     if git rev-parse > /dev/null 2>&1; then
         echo -n "$ZSH_THEME_GIT_TIME_SINCE_COMMIT_PREFIX"
-        # Only proceed if there is actually a commit.
-        if [[ $(git log 2>&1 > /dev/null | grep -c "^fatal: bad default revision") == 0 ]]; then
+        # we know we are in a git repo, let's see if there are commits
+        last_commit=`git log --pretty=format:'%at' -1 2>/dev/null`
+
+        # if there actually is a commit
+        if [[ -n "$last_commit" ]]; then
             # Get the last commit.
-            last_commit=`git log --pretty=format:'%at' -1 2>/dev/null`
             now=`date +%s`
             seconds_since_last_commit=$((now-last_commit))
 
