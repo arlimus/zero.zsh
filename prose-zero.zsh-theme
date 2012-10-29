@@ -56,9 +56,6 @@ function repo {
     is_repo_hg && echo "$(hg_prompt_info)"
 }
 
-#PROMPT='
-#%{%(#~$fg[red]~$fg[blue])%}%n%{$reset_color%} at %{$fg[yellow]%}$(box_name)%{$reset_color%} in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(hg_prompt_info)$(git_prompt_info)
-#$(virtualenv_info)%{%(#~$fg[red]~$fg[blue])%}$(prompt_char)%(?,,%{${fg_bold[white]}%}[%?]%{$reset_color%} ) '
 PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}> '
 
 local return_status="%{$fg[red]%}%(?..✘%? )"
