@@ -59,7 +59,7 @@ function repo {
 PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}> '
 
 local return_status="%{$fg[red]%}%(?..✘%? )"
-RPROMPT='${return_status}$(prompt_color)${PWD/#$HOME/~}%{$reset_color%}'
+RPROMPT='${return_status}$(prompt_color)%30<..<%~%<<%{$reset_color%}'
 
 # Colors for git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{\033[38;05;075m%}"
