@@ -1,3 +1,12 @@
+# zero theme for zsh
+# by Dominik Richter
+#
+# started using bits and pieces from:
+# * prose zsh theme by Steve Losh
+#   https://github.com/sjl/oh-my-zsh/blob/master/themes/prose.zsh-theme
+# * dogenpunkt zsh theme by Matthew M. Nelson
+#   shipped with oh-my-zsh
+
 if [ "x$OH_MY_ZSH_HG" = "x" ]; then
     OH_MY_ZSH_HG="hg"
 fi
