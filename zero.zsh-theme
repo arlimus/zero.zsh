@@ -13,6 +13,7 @@ ZSH_THEME_PROMPT_CHAR_USER='∅'
 ZSH_THEME_PROMPT_CHAR_GIT='±'
 ZSH_THEME_PROMPT_CHAR_HG='☿'
 ZSH_THEME_PROMPT_COLOR="\033[38;05;250m"
+ZSH_THEME_PROMPT_SHOW_HOSTNAME='1'
 # Colors for git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{\033[38;05;075m%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -98,7 +99,11 @@ function prompt_char {
 PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}> '
 
 local return_status="%{$fg[red]%}%(?..✘%? )"
-RPROMPT='${return_status}$(prompt_color)%30<..<%~%<<%{$reset_color%}'
+if [ "x$ZSH_THEME_PROMPT_SHOW_HOSTNAME" = "x1" ]; then
+    RPROMPT='${return_status}$(prompt_color)%30<..<%~ %m%<<%{$reset_color%}'
+else
+    RPROMPT='${return_status}$(prompt_color)%30<..<%~%<<%{$reset_color%}'
+fi
 
 # Determine the time since last commit. If branch is clean,
 # use a neutral color, otherwise colors will vary according to time.
