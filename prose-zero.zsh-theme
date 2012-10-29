@@ -7,75 +7,6 @@
 # * dogenpunkt zsh theme by Matthew M. Nelson
 #   shipped with oh-my-zsh
 
-if [ "x$OH_MY_ZSH_HG" = "x" ]; then
-    OH_MY_ZSH_HG="hg"
-fi
-
-function owned_by {
-    desired="$1"
-    path="$2"
-    [ -d "$path/$desired" ] && return 0
-    [ "$path" = "/" ] && return 127
-    owned_by "$desired" "$(/usr/bin/dirname $path)"
-}
-
-function is_repo_git {
-    git rev-parse 2>/dev/null
-}
-
-function is_repo_hg {
-    owned_by ".hg" "$(pwd)"
-}
-
-function prompt_char {
-    # prompt color (root/user)
-    echo -n "%{%(#~$fg[red]~\033[38;05;075m)%}"
-    
-    # promp character for git (git rev-parse is nice and fast, so it's fine)
-    is_repo_git && echo "$ZSH_THEME_PROMPT_CHAR_GIT" && return
-    # hg as command to test is too slow... do the pragmatic thing instead
-    is_repo_hg && echo "$ZSH_THEME_PROMPT_CHAR_HG" && return
-
-    # prompt char for user (root/user)
-    echo "%(#~$ZSH_THEME_PROMPT_CHAR_ROOT~$ZSH_THEME_PROMPT_CHAR_USER)"
-}
-
-function virtualenv_info {
-    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
-}
-
-function hg_prompt_info {
-    $OH_MY_ZSH_HG prompt --angle-brackets "\
-< on %{$fg[magenta]%}<branch>%{$reset_color%}>\
-< at %{$fg[yellow]%}<tags|%{$reset_color%}, %{$fg[yellow]%}>%{$reset_color%}>\
-%{$fg[green]%}<status|modified|unknown><update>%{$reset_color%}<
-patches: <patches|join( → )|pre_applied(%{$fg[yellow]%})|post_applied(%{$reset_color%})|pre_unapplied(%{$fg_bold[black]%})|post_unapplied(%{$reset_color%})>>" 2>/dev/null
-}
-
-function box_name {
-    [ -f ~/.box-name ] && cat ~/.box-name || hostname -s
-}
-
-function prompt_color {
-  echo -n "%{$reset_color\033[38;05;250m%}"
-}
-
-# modified from oh-my-zsh due to rearranging dirty before ref-name 
-function git_prompt_my_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(parse_git_dirty)${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
-}
-
-function repo {
-    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_my_info)$(git_prompt_short_sha) "
-    is_repo_hg && echo "$(hg_prompt_info)"
-}
-
-PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}> '
-
-local return_status="%{$fg[red]%}%(?..✘%? )"
-RPROMPT='${return_status}$(prompt_color)%30<..<%~%<<%{$reset_color%}'
-
 # Theme configuration
 ZSH_THEME_PROMPT_CHAR_ROOT='#'
 ZSH_THEME_PROMPT_CHAR_USER='∅'
@@ -103,6 +34,71 @@ ZSH_THEME_GIT_TIME_SINCE_COMMIT_LONG="%{\033[38;05;196m%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL="%{\033[38;05;075m%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_PREFIX="%{$reset_color%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_SUFFIX=" "
+
+if [ "x$OH_MY_ZSH_HG" = "x" ]; then
+    OH_MY_ZSH_HG="hg"
+fi
+
+function owned_by {
+    desired="$1"
+    path="$2"
+    [ -d "$path/$desired" ] && return 0
+    [ "$path" = "/" ] && return 127
+    owned_by "$desired" "$(/usr/bin/dirname $path)"
+}
+
+function is_repo_git {
+    git rev-parse 2>/dev/null
+}
+
+function is_repo_hg {
+    owned_by ".hg" "$(pwd)"
+}
+
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+}
+
+function hg_prompt_info {
+    $OH_MY_ZSH_HG prompt --angle-brackets "\
+< on %{$fg[magenta]%}<branch>%{$reset_color%}>\
+< at %{$fg[yellow]%}<tags|%{$reset_color%}, %{$fg[yellow]%}>%{$reset_color%}>\
+%{$fg[green]%}<status|modified|unknown><update>%{$reset_color%}<
+patches: <patches|join( → )|pre_applied(%{$fg[yellow]%})|post_applied(%{$reset_color%})|pre_unapplied(%{$fg_bold[black]%})|post_unapplied(%{$reset_color%})>>" 2>/dev/null
+}
+
+function prompt_color {
+  echo -n "%{$reset_color\033[38;05;250m%}"
+}
+
+# modified from oh-my-zsh due to rearranging dirty before ref-name 
+function git_prompt_my_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(parse_git_dirty)${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
+function repo {
+    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_my_info)$(git_prompt_short_sha) "
+    is_repo_hg && echo "$(hg_prompt_info)"
+}
+
+function prompt_char {
+    # prompt color (root/user)
+    echo -n "%{%(#~$fg[red]~\033[38;05;075m)%}"
+    
+    # promp character for git (git rev-parse is nice and fast, so it's fine)
+    is_repo_git && echo "$ZSH_THEME_PROMPT_CHAR_GIT" && return
+    # hg as command to test is too slow... do the pragmatic thing instead
+    is_repo_hg && echo "$ZSH_THEME_PROMPT_CHAR_HG" && return
+
+    # prompt char for user (root/user)
+    echo "%(#~$ZSH_THEME_PROMPT_CHAR_ROOT~$ZSH_THEME_PROMPT_CHAR_USER)"
+}
+
+PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}> '
+
+local return_status="%{$fg[red]%}%(?..✘%? )"
+RPROMPT='${return_status}$(prompt_color)%30<..<%~%<<%{$reset_color%}'
 
 # Determine the time since last commit. If branch is clean,
 # use a neutral color, otherwise colors will vary according to time.
