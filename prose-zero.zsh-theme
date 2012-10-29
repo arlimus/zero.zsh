@@ -32,12 +32,12 @@ function prompt_char {
     echo -n "%{%(#~$fg[red]~\033[38;05;075m)%}"
     
     # promp character for git (git rev-parse is nice and fast, so it's fine)
-    is_repo_git && echo '±' && return
+    is_repo_git && echo "$ZSH_THEME_PROMPT_CHAR_GIT" && return
     # hg as command to test is too slow... do the pragmatic thing instead
-    is_repo_hg && echo '☿' && return
+    is_repo_hg && echo "$ZSH_THEME_PROMPT_CHAR_HG" && return
 
     # prompt char for user (root/user)
-    echo '%(#~#~∅)'
+    echo "%(#~$ZSH_THEME_PROMPT_CHAR_ROOT~$ZSH_THEME_PROMPT_CHAR_USER)"
 }
 
 function virtualenv_info {
@@ -76,6 +76,12 @@ PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta
 local return_status="%{$fg[red]%}%(?..✘%? )"
 RPROMPT='${return_status}$(prompt_color)%30<..<%~%<<%{$reset_color%}'
 
+# Theme configuration
+ZSH_THEME_PROMPT_CHAR_ROOT='#'
+ZSH_THEME_PROMPT_CHAR_USER='∅'
+ZSH_THEME_PROMPT_CHAR_GIT='±'
+ZSH_THEME_PROMPT_CHAR_HG='☿'
+ZSH_THEME_PROMPT_COLOR="\033[38;05;250m"
 # Colors for git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{\033[38;05;075m%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
