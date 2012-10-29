@@ -52,7 +52,7 @@ function prompt_color {
 }
 
 function repo {
-    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_info) "
+    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_info)$(prompt_color)[$(git_prompt_short_sha)] "
     is_repo_hg && echo "$(hg_prompt_info)"
 }
 
@@ -64,7 +64,7 @@ RPROMPT='${return_status}$(prompt_color)${PWD/#$HOME/~}%{$reset_color%}'
 # Colors for git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{\033[38;05;075m%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{\033[38;05;196m%}!"
+ZSH_THEME_GIT_PROMPT_DIRTY="*" # "%{\033[38;05;196m%}*"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{\033[38;05;214m%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 # Colors for git stati
