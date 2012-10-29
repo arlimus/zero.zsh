@@ -6,8 +6,8 @@ function owned_by {
     desired="$1"
     path="$2"
     [ -d "$path/$desired" ] && return 0
-    [ "$(/usr/bin/realpath $path)" = "/" ] && return 127
-    owned_by "../$path" "$desired"
+    [ "$path" = "/" ] && return 127
+    owned_by "$desired" "$(/usr/bin/dirname $path)"
 }
 
 function is_repo_git {
@@ -15,7 +15,7 @@ function is_repo_git {
 }
 
 function is_repo_hg {
-    owned_by ".hg" "."
+    owned_by ".hg" "$(pwd)"
 }
 
 function prompt_char {
