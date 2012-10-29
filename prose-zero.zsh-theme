@@ -47,8 +47,8 @@ function box_name {
     [ -f ~/.box-name ] && cat ~/.box-name || hostname -s
 }
 
-function prompt_prefix {
-  echo -n "%{\033[38;05;250m%}"
+function prompt_color {
+  echo -n "%{$reset_color\033[38;05;250m%}"
 }
 
 function repo {
@@ -59,7 +59,10 @@ function repo {
 #PROMPT='
 #%{%(#~$fg[red]~$fg[blue])%}%n%{$reset_color%} at %{$fg[yellow]%}$(box_name)%{$reset_color%} in %{$fg_bold[green]%}${PWD/#$HOME/~}%{$reset_color%}$(hg_prompt_info)$(git_prompt_info)
 #$(virtualenv_info)%{%(#~$fg[red]~$fg[blue])%}$(prompt_char)%(?,,%{${fg_bold[white]}%}[%?]%{$reset_color%} ) '
-PROMPT='$(repo)$(prompt_prefix)$(basename $(pwd)) $(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}> '
+PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}> '
+
+local return_status="%{$fg[red]%}%(?..✘)"
+RPROMPT='${return_status}%(?,, %?)$(prompt_color)${PWD/#$HOME/~}%{$reset_color%}'
 
 # Colors for git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{\033[38;05;075m%}"
@@ -80,10 +83,6 @@ ZSH_THEME_GIT_TIME_SINCE_COMMIT_LONG="%{$fg[red]%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL="%{\033[38;05;075m%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_PREFIX="%{$reset_color%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_SUFFIX=" "
-
-
-local return_status="%{$fg[red]%}%(?..✘)%{$reset_color%}"
-RPROMPT='${return_status}%(?,, %?)%{$reset_color%}'
 
 # Determine the time since last commit. If branch is clean,
 # use a neutral color, otherwise colors will vary according to time.
