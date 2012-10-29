@@ -51,8 +51,14 @@ function prompt_color {
   echo -n "%{$reset_color\033[38;05;250m%}"
 }
 
+# modified from oh-my-zsh due to rearranging dirty before ref-name 
+function git_prompt_my_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(parse_git_dirty)${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
 function repo {
-    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_info)$(prompt_color)[$(git_prompt_short_sha)] "
+    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_my_info)$(prompt_color)[$(git_prompt_short_sha)] "
     is_repo_hg && echo "$(hg_prompt_info)"
 }
 
@@ -64,7 +70,7 @@ RPROMPT='${return_status}$(prompt_color)%30<..<%~%<<%{$reset_color%}'
 # Colors for git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{\033[38;05;075m%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="*" # "%{\033[38;05;196m%}*"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{\033[38;05;208m%}" # "%{\033[38;05;196m%}*"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{\033[38;05;214m%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 # Colors for git stati
