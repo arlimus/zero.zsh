@@ -12,6 +12,17 @@ ZSH_THEME="prose-zero"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cdgit='cd $(git rev-parse --show-toplevel)'
+alias l='ls'
+alias ll='ls -lha'
+alias sl=ls # often screw this up
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'
+alias .......='cd ../../../../../../'
+alias ........='cd ../../../../../../../'
+
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
