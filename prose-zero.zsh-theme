@@ -67,7 +67,7 @@ function git_prompt_my_info() {
 }
 
 function repo {
-    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_my_info)$(prompt_color)[$(git_prompt_short_sha)] "
+    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_my_info)$(git_prompt_short_sha) "
     is_repo_hg && echo "$(hg_prompt_info)"
 }
 
@@ -88,6 +88,8 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{\033[38;05;208m%}" # "%{\033[38;05;196m%}*"
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{\033[38;05;214m%}?"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
+ZSH_THEME_GIT_PROMPT_SHA_BEFORE="%{$ZSH_THEME_PROMPT_COLOR%}["
+ZSH_THEME_GIT_PROMPT_SHA_AFTER="]"
 # Colors for git stati
 ZSH_THEME_GIT_PROMPT_ADDED="%{$fg[green]%}✚"
 ZSH_THEME_GIT_PROMPT_MODIFIED="%{$fg[blue]%}✹"
