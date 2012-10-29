@@ -135,11 +135,14 @@ function git_time_since_commit() {
                 COLOR="$ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL"
             fi
 
-            if [ "$HOURS" -gt 72 ]; then
+            if [ "$DAYS" -ge 366 ]; then
+                YEARS=$((seconds_since_last_commit / 31556926))
+                echo -n "$COLOR${YEARS}y%{$reset_color%}"
+            elif [ "$HOURS" -ge 72 ]; then
                 echo -n "$COLOR${DAYS}d%{$reset_color%}"
-            elif [ "$HOURS" -gt 24 ]; then
+            elif [ "$HOURS" -ge 24 ]; then
                 echo -n "$COLOR${DAYS}d${SUB_HOURS}h%{$reset_color%}"
-            elif [ "$MINUTES" -gt 60 ]; then
+            elif [ "$MINUTES" -ge 60 ]; then
                 echo -n "$COLOR${HOURS}h${SUB_MINUTES}m%{$reset_color%}"
             else
                 echo -n "$COLOR${MINUTES}m%{$reset_color%}"
