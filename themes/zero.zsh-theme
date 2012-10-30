@@ -79,7 +79,7 @@ function git_prompt_my_info() {
 }
 
 function repo {
-    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_my_info)$(git_prompt_short_sha) "
+    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_my_info)$(git_prompt_short_sha)"
     is_repo_hg && echo "$(hg_prompt_info)"
 }
 
@@ -96,7 +96,6 @@ function prompt_char {
     echo "%(#~$ZSH_THEME_PROMPT_CHAR_ROOT~$ZSH_THEME_PROMPT_CHAR_USER)"
 }
 
-PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
 
 local return_status="%{$fg[red]%}%(?..✘%? )"
 if [ "x$ZSH_THEME_PROMPT_SHOW_HOSTNAME" = "x1" ]; then
@@ -105,6 +104,7 @@ else
     RPROMPT='${return_status}$(prompt_color)%30<..<%~%<<%{$reset_color%}'
 fi
 
+PROMPT='$(repo) $(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
 # Determine the time since last commit. If branch is clean,
 # use a neutral color, otherwise colors will vary according to time.
 function git_time_since_commit() {
