@@ -96,15 +96,30 @@ function prompt_char {
     echo "%(#~$ZSH_THEME_PROMPT_CHAR_ROOT~$ZSH_THEME_PROMPT_CHAR_USER)"
 }
 
+function path_and_hostname {
+    char_limit="$1"
+    hn="$(hostname)"
+    pwd_limit="$(($char_limit-${#hn}))"
+    pwd_len="${#PWD}"
 
-local return_status="%{$fg[red]%}%(?..✘%? )"
-if [ "x$ZSH_THEME_PROMPT_SHOW_HOSTNAME" = "x1" ]; then
-    RPROMPT='${return_status}$(prompt_color)%30<..<%~ %m%<<%{$reset_color%}'
+    if [ $pwd_len -gt $pwd_limit ]; then
+        echo -n "${hn}:..${PWD:0-$(($pwd_limit-2))}"
+    else
+        echo -n "${hn}:${PWD}"
+    fi
+}
+
+if [ "$ZSH_THEME_PROMPT_SHOW_HOSTNAME" = "1" ]; then
+    # ZSH_THEME_PROMPT_PATH='$(prompt_color)%30<..<%~ %m%<<%{$reset_color%}'
+    ZSH_THEME_PROMPT_PATH='$(prompt_color)$(path_and_hostname 30)%{$reset_color%}'
 else
-    RPROMPT='${return_status}$(prompt_color)%30<..<%~%<<%{$reset_color%}'
+    ZSH_THEME_PROMPT_PATH='$(prompt_color)%30<..<%~%<<%{$reset_color%}'
 fi
 
+local return_status="%{$fg[red]%}%(?..✘%? )"
 PROMPT='$(repo) $(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
+RPROMPT='${return_status}'"${ZSH_THEME_PROMPT_PATH}"
+
 # Determine the time since last commit. If branch is clean,
 # use a neutral color, otherwise colors will vary according to time.
 function git_time_since_commit() {
