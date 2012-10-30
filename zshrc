@@ -10,17 +10,6 @@ ZSH_THEME="zero"
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias cdgit='cd $(git rev-parse --show-toplevel)'
-alias l='ls'
-alias ll='ls -lha'
-alias sl=ls # often screw this up
-alias ..='cd ../'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
-alias ......='cd ../../../../../'
-alias .......='cd ../../../../../../'
-alias ........='cd ../../../../../../../'
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -40,15 +29,9 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git extract)
+plugins=(git extract zero)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:~/.gem/ruby/1.9.1/bin:/opt/nessus/bin:/opt/nessus/sbin:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/zhaery/.rvm/bin
-
-# unset nasty options...
-# complete folders as if in home ~> annoying if not in home
-unsetopt cdablevarS
-# generally never really used it except for cases where it annoyed me
-unsetopt correct_all
