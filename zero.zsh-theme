@@ -96,7 +96,7 @@ function prompt_char {
     echo "%(#~$ZSH_THEME_PROMPT_CHAR_ROOT~$ZSH_THEME_PROMPT_CHAR_USER)"
 }
 
-PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}> '
+PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
 
 local return_status="%{$fg[red]%}%(?..✘%? )"
 if [ "x$ZSH_THEME_PROMPT_SHOW_HOSTNAME" = "x1" ]; then
