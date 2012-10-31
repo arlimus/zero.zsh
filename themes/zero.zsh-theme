@@ -102,13 +102,13 @@ function prompt_char {
 function path_and_hostname {
     char_limit="$1"
     hn="$(hostname)"
-    pwd_limit="$(($char_limit-${#hn}))"
-    pwd_len="${#PWD}"
+    PWD_LIMIT="$(($char_limit-${#hn}))"
+    REL_PWD="${PWD/${HOME}/~}"
 
-    if [ $pwd_len -gt $pwd_limit ]; then
-        echo -n "${hn}:..${PWD:0-$(($pwd_limit-2))}"
+    if [ "${#REL_PWD}" -gt "$PWD_LIMIT" ]; then
+        echo -n "${hn}:..${REL_PWD:0-$(($PWD_LIMIT-2))}"
     else
-        echo -n "${hn}:${PWD}"
+        echo -n "${hn}:${REL_PWD}"
     fi
 }
 
