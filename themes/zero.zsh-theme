@@ -14,9 +14,10 @@ ZSH_THEME_PROMPT_CHAR_GIT='±'
 ZSH_THEME_PROMPT_CHAR_HG='☿'
 ZSH_THEME_PROMPT_COLOR="\033[38;05;250m"
 ZSH_THEME_PROMPT_SHOW_HOSTNAME='1'
+ZSH_THEME_PROMPT_CLASSIC_VIEW='1'
 # Repo stuff
 ZSH_THEME_REPO_PROMPT_PREFIX=""
-ZSH_THEME_REPO_PROMPT_SUFFIX=" "
+ZSH_THEME_REPO_PROMPT_SUFFIX=""
 # Colors for git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{\033[38;05;075m%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -120,8 +121,15 @@ else
 fi
 
 local return_status="%{$fg[red]%}%(?..✘%? )"
-PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
-RPROMPT='${return_status}'"${ZSH_THEME_PROMPT_PATH}"
+
+if [ "$ZSH_THEME_PROMPT_CLASSIC_VIEW" = "1" ]; then
+    PROMPT="${ZSH_THEME_PROMPT_PATH}"' $(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
+    RPROMPT='${return_status}$(repo)%{$reset_color%}'
+else
+    ZSH_THEME_REPO_PROMPT_SUFFIX=""
+    PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
+    RPROMPT='${return_status}'"${ZSH_THEME_PROMPT_PATH}"
+fi
 
 # Determine the time since last commit. If branch is clean,
 # use a neutral color, otherwise colors will vary according to time.
