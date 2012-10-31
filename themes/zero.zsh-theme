@@ -14,6 +14,9 @@ ZSH_THEME_PROMPT_CHAR_GIT='±'
 ZSH_THEME_PROMPT_CHAR_HG='☿'
 ZSH_THEME_PROMPT_COLOR="\033[38;05;250m"
 ZSH_THEME_PROMPT_SHOW_HOSTNAME='1'
+# Repo stuff
+ZSH_THEME_REPO_PROMPT_PREFIX=""
+ZSH_THEME_REPO_PROMPT_SUFFIX=" "
 # Colors for git
 ZSH_THEME_GIT_PROMPT_PREFIX="%{\033[38;05;075m%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
@@ -79,8 +82,8 @@ function git_prompt_my_info() {
 }
 
 function repo {
-    is_repo_git && echo "$(git_time_since_commit)$(git_prompt_my_info)$(git_prompt_short_sha)"
-    is_repo_hg && echo "$(hg_prompt_info)"
+    is_repo_git && echo "${ZSH_THEME_REPO_PROMPT_PREFIX}$(git_time_since_commit)$(git_prompt_my_info)$(git_prompt_short_sha)${ZSH_THEME_REPO_PROMPT_SUFFIX}"
+    is_repo_hg && echo "${ZSH_THEME_REPO_PROMPT_PREFIX}$(hg_prompt_info)${ZSH_THEME_REPO_PROMPT_SUFFIX}"
 }
 
 function prompt_char {
@@ -117,7 +120,7 @@ else
 fi
 
 local return_status="%{$fg[red]%}%(?..✘%? )"
-PROMPT='$(repo) $(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
+PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
 RPROMPT='${return_status}'"${ZSH_THEME_PROMPT_PATH}"
 
 # Determine the time since last commit. If branch is clean,
