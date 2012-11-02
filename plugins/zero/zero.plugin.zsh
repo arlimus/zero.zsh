@@ -20,3 +20,9 @@ alias ........='cd ../../../../../../../'
 unsetopt cdablevarS
 # generally never really used it except for cases where it annoyed me
 unsetopt correct_all
+
+# history handling: add to shared history incrementally 
+# but DON'T merge every shell's history during usage
+# (really annoying for sb who has many shells open with different command categories...)
+setopt inc_append_history
+unsetopt share_history
