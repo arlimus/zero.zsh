@@ -82,10 +82,13 @@ alias -g ,g=' | grep '
 # usage: ./run.daemon ,nul
 alias -g ,nul='> /dev/null 2>&1'
 # usage: du -hs * ,sort
+alias -g ,s=' | sort '
 alias -g ,sh=' | sort -h '
 alias -g ,sort=' | sort '
 # usage: ls -1 ,count
 alias -g ,lc=' | wc -l '
+alias -g ,wc=' | wc -w '
+alias -g ,bc=' | wc -c '
 alias -g ,count=' | wc -l '
 
 # alter some zsh options
