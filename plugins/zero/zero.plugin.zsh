@@ -15,6 +15,13 @@ alias ......='cd ../../../../../'
 alias .......='cd ../../../../../../'
 alias ........='cd ../../../../../../../'
 
+# some global aliases
+alias -g L=' | less '
+alias -g LL="2>&1 | less"
+alias -g G=' | grep '
+alias -g NUL="> /dev/null 2>&1"
+alias TF='tail -f '
+
 # unset nasty options...
 # complete folders as if in home ~> annoying if not in home
 unsetopt cdablevarS
