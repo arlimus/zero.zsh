@@ -73,20 +73,20 @@ alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){
 [ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
 
 # some global aliases
-# usage: cat huge.txt .l
-alias -g .l=' | less '
-# usage: ./stdout+stderr.sh .ll
-alias -g .ll="2>&1 | less"
-# usage: cat my.html .g "<h3" .g "id="
-alias -g .g=' | grep '
-# usage: ./run.daemon .nul
-alias -g .nul='> /dev/null 2>&1'
-# usage: du -hs * .sort
-alias -g .sh=' | sort -h '
-alias -g .sort=' | sort '
-# usage: ls -1 .count
-alias -g .lc=' | wc -l '
-alias -g .count=' | wc -l '
+# usage: cat huge.txt ,l
+alias -g ,l=' | less '
+# usage: ./stdout+stderr.sh ,ll
+alias -g ,ll="2>&1 | less"
+# usage: cat my.html ,g "<h3" ,g "id="
+alias -g ,g=' | grep '
+# usage: ./run.daemon ,nul
+alias -g ,nul='> /dev/null 2>&1'
+# usage: du -hs * ,sort
+alias -g ,sh=' | sort -h '
+alias -g ,sort=' | sort '
+# usage: ls -1 ,count
+alias -g ,lc=' | wc -l '
+alias -g ,count=' | wc -l '
 
 # alter some zsh options
 
