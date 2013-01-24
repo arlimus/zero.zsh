@@ -6,6 +6,7 @@ alias cdgit='git rev-parse 2>/dev/null && cd $(git rev-parse --show-toplevel)'
 
 # refactor simpler aliases
 alias l='ls'
+alias l1='ls -1'
 alias ll='ls -lha'
 alias sl=ls # since i often screw this up
 # usage: TF my.log
