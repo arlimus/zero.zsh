@@ -10,6 +10,8 @@ alias ll='ls -lha'
 alias sl=ls # since i often screw this up
 # usage: TF my.log
 alias TF='tail -f '
+# usage: sizeof *
+alias sizeof='du -hs '
 
 # quick directory traversal
 alias ..='cd ../'
