@@ -73,6 +73,21 @@ alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){
 [ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
 
 # some global aliases
+# about their style:
+#   they all carry the ',[a-z]' style
+#   an alternative is usually '[A-Z]' instead
+#   i was also considering '.[a-z]' style
+# finding:
+#   [A-Z]-style: this will happen very seldomly, but it can conflict with input
+#                since letters are replaced before anything else happens
+#                eg: mkdir G H I J K L
+#                 => mkdir H I J K
+#   .[a-z]-style: very nice but suffers a similar problem, since hidden folders
+#                 in linux use the very same syntax
+#                 it's not as bad, however, since you can always use absolute
+#                 paths
+#   ,[a-z]-style: doesn't conflict with anything as far as i know
+#                 it feels a bit strange at first, but you'll get used to it
 # usage: cat huge.txt ,l
 alias -g ,l=' | less '
 # usage: ./stdout+stderr.sh ,la
