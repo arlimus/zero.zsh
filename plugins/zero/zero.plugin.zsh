@@ -33,6 +33,8 @@ alias -g G=' | grep '
 alias -g NUL='> /dev/null 2>&1'
 # usage: du -hs * SH
 alias -g SH=' | sort -h '
+# usage: ls -1 LC
+alias -g LC=' | wc -l '
 
 
 # alter some zsh options
