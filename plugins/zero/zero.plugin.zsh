@@ -94,6 +94,8 @@ alias -g ,l=' | less '
 alias -g ,la="2>&1 | less"
 # usage: cat my.html ,g "<h3" ,g "id="
 alias -g ,g=' | grep '
+alias -g ,gi=' | grep -i '
+alias -g ,go=' | grep --only '
 # usage: ./run.daemon ,nul
 alias -g ,nul='> /dev/null 2>&1'
 # usage: du -hs * ,sort
