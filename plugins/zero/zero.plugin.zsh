@@ -28,7 +28,9 @@ alias -g LL="2>&1 | less"
 # usage: cat my.html G "<h3" G "id="
 alias -g G=' | grep '
 # usage: ./run.daemon NUL
-alias -g NUL="> /dev/null 2>&1"
+alias -g NUL='> /dev/null 2>&1'
+# usage: du -hs * SH
+alias -g SH=' | sort -h '
 
 
 # alter some zsh options
