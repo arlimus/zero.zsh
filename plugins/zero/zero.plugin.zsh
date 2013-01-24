@@ -75,8 +75,8 @@ alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){
 # some global aliases
 # usage: cat huge.txt ,l
 alias -g ,l=' | less '
-# usage: ./stdout+stderr.sh ,ll
-alias -g ,ll="2>&1 | less"
+# usage: ./stdout+stderr.sh ,la
+alias -g ,la="2>&1 | less"
 # usage: cat my.html ,g "<h3" ,g "id="
 alias -g ,g=' | grep '
 # usage: ./run.daemon ,nul
