@@ -16,7 +16,7 @@ references:
 
 ### plugin
 
-Please see [plugins/zero/zero.plugin.zsh](blob/master/plugins/zero/zero.plugin.zsh). All changes are well documented.
+Please see [plugins/zero/zero.plugin.zsh](zero.zsh/blob/master/plugins/zero/zero.plugin.zsh). All changes are well documented.
 
 
 ## Requirments
