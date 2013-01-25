@@ -7,7 +7,7 @@ Consists of a theme and a plugin. They can be used independently. Both have to b
 * simple clean design
 * support for git and hg repositories
 
-![Preview in themes/zero.zsh-theme.png](master/themes/zero.zsh-theme.png)
+![Preview in themes/zero.zsh-theme.png](https://raw.github.com/arlimus/zero.zsh/master/themes/zero.zsh-theme.png)
 
 references:
 
