@@ -7,6 +7,8 @@ Consists of a theme and a plugin. They can be used independently. Both have to b
 * simple clean design
 * support for git and hg repositories
 
+![Preview in themes/zero.zsh-theme.png](master/themes/zero.zsh-theme.png)
+
 references:
 
 * prose theme + guide (see: http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/)
