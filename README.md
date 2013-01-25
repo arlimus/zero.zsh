@@ -2,7 +2,7 @@
 
 Consists of a theme and a plugin. They can be used independently. Both have to be activated explicitly.
 
-## zero theme
+### theme
 
 * simple clean design
 * support for git and hg repositories
@@ -12,16 +12,17 @@ references:
 * prose theme + guide (see: http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/)
 * the many preexisting themes (see: https://github.com/robbyrussell/oh-my-zsh/tree/master/themes)
 
-## zero plugin
+### plugin
 
-Please see [plugins/zero/zero.plugin.zsh](plugins/zero/zero.plugin.zsh). All changes are well documented.
+Please see [plugins/zero/zero.plugin.zsh](master/plugins/zero/zero.plugin.zsh). All changes are well documented.
 
-# installation
 
-Requirments:
+## Requirments
 
 * zsh
 * oh-my-zsh
+
+## Installation
 
 Installation in home directory of current user:
 
