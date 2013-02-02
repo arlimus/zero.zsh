@@ -37,6 +37,9 @@ alias -g SH=' | sort -h '
 # usage: ls -1 LC
 alias -g LC=' | wc -l '
 
+# conditional aliases
+[ -f "/usr/bin/acp" ] && alias cp="/usr/bin/acp -g "
+[ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
 
 # alter some zsh options
 
