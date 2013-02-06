@@ -72,7 +72,7 @@ alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){
 [ -f "/usr/bin/acp" ] && alias cp="/usr/bin/acp -g "
 [ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
 
-# some global aliases
+# desc: misc global aliases
 # about their style:
 #   they all carry the ',[a-z]' style
 #   an alternative is usually '[A-Z]' instead
