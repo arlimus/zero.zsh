@@ -18,6 +18,34 @@ references:
 
 Please see [plugins/zero/zero.plugin.zsh](zero.zsh/blob/master/plugins/zero/zero.plugin.zsh). All changes are well documented.
 
+Short reference:
+
+  * misc shorthands
+
+        sizeof *                       # du -hs  *
+        ..                             # cd ../
+        .....                          # cd ../../../../
+  * quickly go to root folder of git repository
+
+        cdgit
+  * grep all IPv4 and IPv6 addresses
+
+        grep_ip nmap_output.txt
+        grep_ip4 nmap_output.txt
+        grep_ip6 nmap_output.txt
+  * if they are installed, use advcp utilities (coreutils' cp and mv with progress bar)
+
+        cp -rv a /to/b                 # /usr/bin/acp -g " -rv a /to/b
+        mv -v a /to/b                  # /usr/bin/amv -g " -v a /to/b
+  * misc global aliases
+
+        cat huge.txt L                 # cat huge.txt  | less
+        ./stdout+stderr.sh LL          # ./stdout+stderr.sh 2>&1 | less"
+        cat my.html G "<h3" G "id="    # cat my.html  | grep  "<h3"  | grep  "id="
+        ./run.daemon NUL               # ./run.daemon > /dev/null 2>&1
+        du -hs * SH                    # du -hs *  | sort -h
+        ls -1 LC                       # ls -1  | wc -l
+
 
 ## Requirments
 
