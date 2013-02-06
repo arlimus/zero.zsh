@@ -1,27 +1,19 @@
-# usage: quickly go to root folder of git repository
-#     pwd      # /my-repo/lib/subfolder
-#     cdgit
-#     pwd      # /my-repo
-alias cdgit='git rev-parse 2>/dev/null && cd $(git rev-parse --show-toplevel)'
+# plugins for zero zsh
 
 # refactor simpler aliases
+# desc: misc shorthands
+# use: sizeof *
 alias l='ls'
 alias l1='ls -1'
 alias ll='ls -lha'
+alias TF='tail -f '
 # since i often screw this up
 alias sl=ls
-# usage: follow the output of a file
-#     TF my.log
-alias TF='tail -f '
-# usage: print size of sth on disk
-#     sizeof *
 alias sizeof='du -hs '
 
-# usage: quick directory traversal
-#     # all commands run in: /a/b/c/d
-#     ..        # /a/b/c
-#     ...       # /a/b
-#     ....      # /a
+# quick directory traversal
+# use: ..
+#      .....
 alias ..='cd ../'
 alias ...='cd ../../'
 alias ....='cd ../../../'
@@ -29,6 +21,10 @@ alias .....='cd ../../../../'
 alias ......='cd ../../../../../'
 alias .......='cd ../../../../../../'
 alias ........='cd ../../../../../../../'
+
+# desc: quickly go to root folder of git repository
+# usage: cdgit
+alias cdgit='git rev-parse 2>/dev/null && cd $(git rev-parse --show-toplevel)'
 
 
 # grep helpers
@@ -58,42 +54,37 @@ alias ........='cd ../../../../../../../'
     #(?>\.(?4)){3}                                         0-255.0-255.0-255.0-255
   #)
 #)/iD'                                                     case-insensitive + updated character behavior
-# usage: find all IPv4 and IPv6 addresses in nmap_output.txt
-#        grep_ip nmap_output.txt
-alias grep_ip=' grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
-# usage: find all IPv6 addresses in nmap_output.txt
-#        grep_ip6 nmap_output.txt
-alias grep_ip6='grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
-# usage: find all IPv4 addresses in nmap_output.txt
+# desc:  grep all IPv4 and IPv6 addresses
+# usage: grep_ip nmap_output.txt
 #        grep_ip4 nmap_output.txt
+#        grep_ip6 nmap_output.txt
+alias grep_ip=' grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
+alias grep_ip6='grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
 alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){3}"'
 
 
 # conditional aliases
-# usage: if they are installed, use advcp utilities (coreutils' cp and mv with progress bar)
-#        cp -rv folder /remote/destination
-#        mv -v folder /remote/destination
+
+# desc:  if they are installed, use advcp utilities
+#        (coreutils' cp and mv with progress bar)
+# use: cp -rv a /to/b
+#      mv -v a /to/b
 [ -f "/usr/bin/acp" ] && alias cp="/usr/bin/acp -g "
 [ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
 
 # some global aliases
-# usage: pipe huge.txt (stdout) into less
-#        cat huge.txt L
+# desc: misc global aliases
+# use: cat huge.txt L
 alias -g L=' | less '
-# usage: pipe stdout+stderr results into less
-#        ./stdout+stderr.sh LL
+# use: ./stdout+stderr.sh LL
 alias -g LL="2>&1 | less"
-# usage: shorthand for writing grep
-#        cat my.html G "<h3" G "id="
+# use: cat my.html G "<h3" G "id="
 alias -g G=' | grep '
-# usage: do not show any output (pipe stdout+stderr to /dev/null)
-#        ./run.daemon NUL
+# use: ./run.daemon NUL
 alias -g NUL='> /dev/null 2>&1'
-# usage: shorthand for sorting human-readable
-#        du -hs * SH
+# use: du -hs * SH
 alias -g SH=' | sort -h '
-# usage: shorthand for counting lines
-#        ls -1 LC
+# use: ls -1 LC
 alias -g LC=' | wc -l '
 
 # alter some zsh options
