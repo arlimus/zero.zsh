@@ -51,8 +51,14 @@ alias ........='cd ../../../../../../../'
     #(?>\.(?4)){3}                                         0-255.0-255.0-255.0-255
   #)
 #)/iD'                                                     case-insensitive + updated character behavior
+# usage: grep_ip nmap_output.txt
+#        find all IPv4 and IPv6 addresses in nmap_output.txt
 alias grep_ip=' grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
+# usage: grep_ip6 nmap_output.txt
+#        find all IPv6 addresses in nmap_output.txt
 alias grep_ip6='grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
+# usage: grep_ip4 nmap_output.txt
+#        find all IPv4 addresses in nmap_output.txt
 alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){3}"'
 
 
