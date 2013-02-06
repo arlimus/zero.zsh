@@ -1,20 +1,27 @@
-# quickly go to root folder of git repository
-# eg: inside /my-repo/lib/subfolder
+# usage: quickly go to root folder of git repository
+#     pwd      # /my-repo/lib/subfolder
 #     cdgit
-#     now inside /my-repo
+#     pwd      # /my-repo
 alias cdgit='git rev-parse 2>/dev/null && cd $(git rev-parse --show-toplevel)'
 
 # refactor simpler aliases
 alias l='ls'
 alias l1='ls -1'
 alias ll='ls -lha'
-alias sl=ls # since i often screw this up
-# usage: TF my.log
+# since i often screw this up
+alias sl=ls
+# usage: follow the output of a file
+#     TF my.log
 alias TF='tail -f '
-# usage: sizeof *
+# usage: print size of sth on disk
+#     sizeof *
 alias sizeof='du -hs '
 
-# quick directory traversal
+# usage: quick directory traversal
+#     # all commands run in: /a/b/c/d
+#     ..        # /a/b/c
+#     ...       # /a/b
+#     ....      # /a
 alias ..='cd ../'
 alias ...='cd ../../'
 alias ....='cd ../../../'
@@ -51,19 +58,21 @@ alias ........='cd ../../../../../../../'
     #(?>\.(?4)){3}                                         0-255.0-255.0-255.0-255
   #)
 #)/iD'                                                     case-insensitive + updated character behavior
-# usage: grep_ip nmap_output.txt
-#        find all IPv4 and IPv6 addresses in nmap_output.txt
+# usage: find all IPv4 and IPv6 addresses in nmap_output.txt
+#        grep_ip nmap_output.txt
 alias grep_ip=' grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
-# usage: grep_ip6 nmap_output.txt
-#        find all IPv6 addresses in nmap_output.txt
+# usage: find all IPv6 addresses in nmap_output.txt
+#        grep_ip6 nmap_output.txt
 alias grep_ip6='grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
-# usage: grep_ip4 nmap_output.txt
-#        find all IPv4 addresses in nmap_output.txt
+# usage: find all IPv4 addresses in nmap_output.txt
+#        grep_ip4 nmap_output.txt
 alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){3}"'
 
 
 # conditional aliases
-# advcp utilities (coreutils' cp and mv with progress bar)
+# usage: if they are installed, use advcp utilities (coreutils' cp and mv with progress bar)
+#        cp -rv folder /remote/destination
+#        mv -v folder /remote/destination
 [ -f "/usr/bin/acp" ] && alias cp="/usr/bin/acp -g "
 [ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
 
