@@ -94,8 +94,8 @@ alias -g ,l=' | less '
 alias -g ,la="2>&1 | less"
 # use: cat my.html ,g "<h3" ,g "id="
 alias -g ,g=' | grep '
-# use: cat my.html ,g "<h3" ,g "id="
-alias -g ,gi=' | grep -i '
+# use: cat ALLCAPS ,gi noncaps
+alias -g ,gi=' | grep --ignore-case '
 # use: cat my.html ,go "href=[^ ]*"
 alias -g ,go=' | grep --only '
 # use: ./run.daemon ,nul
@@ -104,15 +104,15 @@ alias -g ,nul='> /dev/null 2>&1'
 alias -g ,s=' | sort '
 alias -g ,sort=' | sort '
 # use: du -hs * ,sh
-alias -g ,sh=' | sort -h '
+alias -g ,sh=' | sort --human-numeric-sort '
 # use: ls -1 ,count
-alias -g ,count=' | wc -l '
+alias -g ,count=' | wc --lines '
 # use: ls -1 ,cl
-alias -g ,cl=' | wc -l '
+alias -g ,cl=' | wc --lines '
 # use: cat essay.txt ,cw
-alias -g ,cw=' | wc -w '
+alias -g ,cw=' | wc --words '
 # use: cat my.bin ,cb
-alias -g ,cb=' | wc -c '
+alias -g ,cb=' | wc --bytes '
 
 # alter some zsh options
 
