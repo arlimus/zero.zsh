@@ -1,0 +1,82 @@
+#!/usr/bin/env ruby
+
+dst_file = 'README.md'
+src_file = 'README.md.raw'
+
+lines = Dir["plugins/zero/*"].
+  map{|f| File::read f}.
+  join("\n\n")
+
+# list of regular aliases
+$aliases = Hash[ 
+  lines.
+  scan(/alias ([^ =]*)=['"]?([^\n']*)['"]?/)
+]
+# list of global aliases
+$galiases = Hash[
+  lines.
+  scan(/alias -g ([^ =]*)=(?:['"]?)([^\n']*)(?:['"]?)/)
+]
+
+# find all comments that match te documentation lines
+# ie: use:, usage:, desc:
+docs = lines.
+  scan(/(?<=\n# ).*/).join("\n").
+  scan(/(?:use|usage|desc): [^\n]*(?:\n[ ]{4,}[^\n]+)*/)
+
+# generate the description string
+def doccy_desc(d)
+  d.sub(/^desc:[ ]*/,'').gsub(/\n[ ]*/,' ')
+end
+
+def doccy_use(d)
+  lines = d.sub(/^use:[ ]*/,'').gsub(/\n[ ]*/,"\n").split("\n")
+  def in_md( orig, r, nu )
+    return "%-30s # %-30s" % [orig, orig.gsub(r,nu)]
+  end
+  def is_alias( use )
+    $aliases.each do |k,v|
+      r = Regexp.new("^"+Regexp.escape(k)+"( |$)")
+      return in_md(use, r, v+" ") if use =~ r
+    end
+    nil
+  end
+  def is_galias( use )
+    $galiases.each do |k,v|
+      mr = Regexp.new(" "+Regexp.escape(k)+"( |$)")
+      return in_md(use, mr, " "+v+" ") if use =~ mr
+    end
+    nil
+  end
+
+  lines.map do |use|
+    is_alias(use) || is_galias(use) || use
+  end.compact.join("\n")
+end
+
+def doccy_usage(d)
+  d.sub(/^usage:[ ]*/,'').gsub(/\n[ ]*/,"\n")
+end
+
+def md_code(b, indent = 0)
+  b.split("\n").map do |line|
+    ("    "*(indent+1))+line
+  end.join("\n")
+end
+
+md_docs = (docs.map do |d| case d
+  when /^desc: /;    "\n* "+doccy_desc(d)+"\n"
+  when /^usage: /;   md_code( doccy_usage(d), 1 )
+  when /^use: /;     md_code( doccy_use(d), 1 )
+  else nil; end
+end).flatten.compact
+
+File::write dst_file, 
+  File::read(src_file).
+  sub('PLUGIN_DOC', "\n"+md_docs.join("\n"))
+
+#pcregrep -iM "^(# usage:.*\n(#    .*\n)*)" plugins/zero/* | \
+#  sed 's/^# //' | \
+#  sed 's/usage: \(.*\)/\n* \1\n/' | \
+#  sed 's/^    [ ]*/        /' | \
+#  ruby -e "File::write 'README.md', File::read('README.md.raw').sub('PLUGIN_DOC', ARGF.read)"
