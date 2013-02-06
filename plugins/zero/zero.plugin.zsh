@@ -88,25 +88,31 @@ alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){
 #                 paths
 #   ,[a-z]-style: doesn't conflict with anything as far as i know
 #                 it feels a bit strange at first, but you'll get used to it
-# usage: cat huge.txt ,l
+# use: cat huge.txt ,l
 alias -g ,l=' | less '
-# usage: ./stdout+stderr.sh ,la
+# use: ./stdout+stderr.sh ,la
 alias -g ,la="2>&1 | less"
-# usage: cat my.html ,g "<h3" ,g "id="
+# use: cat my.html ,g "<h3" ,g "id="
 alias -g ,g=' | grep '
+# use: cat my.html ,g "<h3" ,g "id="
 alias -g ,gi=' | grep -i '
+# use: cat my.html ,go "href=[^ ]*"
 alias -g ,go=' | grep --only '
-# usage: ./run.daemon ,nul
+# use: ./run.daemon ,nul
 alias -g ,nul='> /dev/null 2>&1'
-# usage: du -hs * ,sort
+# use: ls -1 ,s
 alias -g ,s=' | sort '
-alias -g ,sh=' | sort -h '
 alias -g ,sort=' | sort '
-# usage: ls -1 ,count
-alias -g ,cl=' | wc -l '
-alias -g ,cw=' | wc -w '
-alias -g ,cb=' | wc -c '
+# use: du -hs * ,sh
+alias -g ,sh=' | sort -h '
+# use: ls -1 ,count
 alias -g ,count=' | wc -l '
+# use: ls -1 ,cl
+alias -g ,cl=' | wc -l '
+# use: cat essay.txt ,cw
+alias -g ,cw=' | wc -w '
+# use: cat my.bin ,cb
+alias -g ,cb=' | wc -c '
 
 # alter some zsh options
 
