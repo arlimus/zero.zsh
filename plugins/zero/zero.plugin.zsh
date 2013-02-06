@@ -23,6 +23,39 @@ alias ......='cd ../../../../../'
 alias .......='cd ../../../../../../'
 alias ........='cd ../../../../../../../'
 
+
+# grep helpers
+# ipv6 regex by MichaelRushton,
+# http://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
+# '/
+#(?>
+  #(?>
+    #([a-f0-9]{1,4})                                  ?1 = 0-f ... 0000-ffff (1-4 digit hex)
+    #(?>:(?1)){7}                                          x:x:x:x:x:x:x:x   (all 8 fields)
+    #|
+    #(?!                                                   do not:
+      #(?:.*[a-f0-9](?>:|$)){8,}                           any followed by hex 8 or more times
+    #)                                                     ie: make sure there are no more than a total of 7 fields max if we use ::
+    #((?1)(?>:(?1)){0,6})?                            ?2 = x ... x:x:x:x:x:x:x  (up to 7 fields)
+    #::(?2)?                                               part::part?
+  #)|
+  #(?>
+    #(?>
+      #(?1)(?>:(?1)){5}:                                   x:x:x:x:x:x: (6 fields + colon)
+      #|
+      #(?!(?:.*[a-f0-9]:){6,})                             no more than 5 fields max
+      #(?3)?                                               conditional prefix
+      #::(?>((?1)(?>:(?1)){0,4}):)?                        :: + up to 4 fields followed by colon
+    #)?                                                    conditionally (ie matches ipv4-in-ipv6 or just ipv4)
+    #(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])      ?4 = 0-255
+    #(?>\.(?4)){3}                                         0-255.0-255.0-255.0-255
+  #)
+#)/iD'                                                     case-insensitive + updated character behavior
+alias grep_ip='  | grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
+alias grep_ip6=' | grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
+alias grep_ip4=' | grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){3}"'
+
+
 # some global aliases
 # usage: cat huge.txt L
 alias -g L=' | less '
