@@ -77,17 +77,23 @@ alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){
 [ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
 
 # some global aliases
-# usage: cat huge.txt L
+# usage: pipe huge.txt (stdout) into less
+#        cat huge.txt L
 alias -g L=' | less '
-# usage: ./stdout+stderr.sh LL
+# usage: pipe stdout+stderr results into less
+#        ./stdout+stderr.sh LL
 alias -g LL="2>&1 | less"
-# usage: cat my.html G "<h3" G "id="
+# usage: shorthand for writing grep
+#        cat my.html G "<h3" G "id="
 alias -g G=' | grep '
-# usage: ./run.daemon NUL
+# usage: do not show any output (pipe stdout+stderr to /dev/null)
+#        ./run.daemon NUL
 alias -g NUL='> /dev/null 2>&1'
-# usage: du -hs * SH
+# usage: shorthand for sorting human-readable
+#        du -hs * SH
 alias -g SH=' | sort -h '
-# usage: ls -1 LC
+# usage: shorthand for counting lines
+#        ls -1 LC
 alias -g LC=' | wc -l '
 
 # alter some zsh options
