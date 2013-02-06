@@ -31,11 +31,12 @@ Short reference:
 
         cdgit
 
-* grep all IPv4 and IPv6 addresses
+* grep all IPv4 and IPv6 addresses also works in global style via `,g_ip`, `,g_ip4`, `,g_ip6`
 
         grep_ip nmap_output.txt
         grep_ip4 nmap_output.txt
         grep_ip6 nmap_output.txt
+        nmap 192.168.0.0/24 ,g_ip4
 
 * if they are installed, use advcp utilities (coreutils' cp and mv with progress bar)
 

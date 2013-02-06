@@ -55,12 +55,18 @@ alias cdgit='git rev-parse 2>/dev/null && cd $(git rev-parse --show-toplevel)'
   #)
 #)/iD'                                                     case-insensitive + updated character behavior
 # desc:  grep all IPv4 and IPv6 addresses
+#        also works in global style via `,g_ip`, `,g_ip4`, `,g_ip6`
 # usage: grep_ip nmap_output.txt
 #        grep_ip4 nmap_output.txt
 #        grep_ip6 nmap_output.txt
+#        nmap 192.168.0.0/24 ,g_ip4
 alias grep_ip=' grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
 alias grep_ip6='grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
 alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){3}"'
+# global grep helpers
+alias -g ,g_ip='  | grep_ip '
+alias -g ,g_ip4=' | grep_ip4 '
+alias -g ,g_ip6=' | grep_ip6 '
 
 
 # conditional aliases
