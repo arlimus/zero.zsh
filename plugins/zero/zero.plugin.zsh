@@ -56,6 +56,11 @@ alias grep_ip6=' | grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](
 alias grep_ip4=' | grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){3}"'
 
 
+# conditional aliases
+# advcp utilities (coreutils' cp and mv with progress bar)
+[ -f "/usr/bin/acp" ] && alias cp="/usr/bin/acp -g "
+[ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
+
 # some global aliases
 # usage: cat huge.txt L
 alias -g L=' | less '
@@ -69,10 +74,6 @@ alias -g NUL='> /dev/null 2>&1'
 alias -g SH=' | sort -h '
 # usage: ls -1 LC
 alias -g LC=' | wc -l '
-
-# conditional aliases
-[ -f "/usr/bin/acp" ] && alias cp="/usr/bin/acp -g "
-[ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
 
 # alter some zsh options
 
