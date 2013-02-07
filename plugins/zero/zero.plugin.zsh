@@ -55,12 +55,18 @@ alias cdgit='git rev-parse 2>/dev/null && cd $(git rev-parse --show-toplevel)'
   #)
 #)/iD'                                                     case-insensitive + updated character behavior
 # desc:  grep all IPv4 and IPv6 addresses
+#        also works in global style via `,g_ip`, `,g_ip4`, `,g_ip6`
 # usage: grep_ip nmap_output.txt
 #        grep_ip4 nmap_output.txt
 #        grep_ip6 nmap_output.txt
+#        nmap 192.168.0.0/24 ,g_ip4
 alias grep_ip=' grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)?(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
 alias grep_ip6='grep -iP "(?>(?>([a-f0-9]{1,4})(?>:(?1)){7}|(?!(?:.*[a-f0-9](?>:|$)){8,})((?1)(?>:(?1)){0,6})?::(?2)?)|(?>(?>(?1)(?>:(?1)){5}:|(?!(?:.*[a-f0-9]:){6,})(?3)?::(?>((?1)(?>:(?1)){0,4}):)?)(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?4)){3}))"'
 alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){3}"'
+# global grep helpers
+alias -g ,g_ip='  | grep_ip '
+alias -g ,g_ip4=' | grep_ip4 '
+alias -g ,g_ip6=' | grep_ip6 '
 
 
 # conditional aliases
@@ -73,18 +79,46 @@ alias grep_ip4='grep -iP "(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])(?>\.(?1)){
 [ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
 
 # desc: misc global aliases
-# use: cat huge.txt L
-alias -g L=' | less '
-# use: ./stdout+stderr.sh LL
-alias -g LL="2>&1 | less"
-# use: cat my.html G "<h3" G "id="
-alias -g G=' | grep '
-# use: ./run.daemon NUL
-alias -g NUL='> /dev/null 2>&1'
-# use: du -hs * SH
-alias -g SH=' | sort -h '
-# use: ls -1 LC
-alias -g LC=' | wc -l '
+# about their style:
+#   they all carry the ',[a-z]' style
+#   an alternative is usually '[A-Z]' instead
+#   i was also considering '.[a-z]' style
+# finding:
+#   [A-Z]-style: this will happen very seldomly, but it can conflict with input
+#                since letters are replaced before anything else happens
+#                eg: mkdir G H I J K L
+#                 => mkdir H I J K
+#   .[a-z]-style: very nice but suffers a similar problem, since hidden folders
+#                 in linux use the very same syntax
+#                 it's not as bad, however, since you can always use absolute
+#                 paths
+#   ,[a-z]-style: doesn't conflict with anything as far as i know
+#                 it feels a bit strange at first, but you'll get used to it
+# use: cat huge.txt ,l
+alias -g ,l=' | less '
+# use: ./stdout+stderr.sh ,la
+alias -g ,la="2>&1 | less"
+# use: cat my.html ,g "<h3" ,g "id="
+alias -g ,g=' | grep '
+# use: cat ALLCAPS ,gi noncaps
+alias -g ,gi=' | grep --ignore-case '
+# use: cat my.html ,go "href=[^ ]*"
+alias -g ,go=' | grep --only '
+# use: ./run.daemon ,nul
+alias -g ,nul='> /dev/null 2>&1'
+# use: ls -1 ,s
+alias -g ,s=' | sort '
+alias -g ,sort=' | sort '
+# use: du -hs * ,sh
+alias -g ,sh=' | sort --human-numeric-sort '
+# use: ls -1 ,count
+alias -g ,count=' | wc --lines '
+# use: ls -1 ,cl
+alias -g ,cl=' | wc --lines '
+# use: cat essay.txt ,cw
+alias -g ,cw=' | wc --words '
+# use: cat my.bin ,cb
+alias -g ,cb=' | wc --bytes '
 
 # alter some zsh options
 

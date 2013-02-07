@@ -20,31 +20,43 @@ Please see [plugins/zero/zero.plugin.zsh](zero.zsh/blob/master/plugins/zero/zero
 
 Short reference:
 
-  * misc shorthands
+
+* misc shorthands
 
         sizeof *                       # du -hs  *
         ..                             # cd ../
         .....                          # cd ../../../../
-  * quickly go to root folder of git repository
+
+* quickly go to root folder of git repository
 
         cdgit
-  * grep all IPv4 and IPv6 addresses
+
+* grep all IPv4 and IPv6 addresses also works in global style via `,g_ip`, `,g_ip4`, `,g_ip6`
 
         grep_ip nmap_output.txt
         grep_ip4 nmap_output.txt
         grep_ip6 nmap_output.txt
-  * if they are installed, use advcp utilities (coreutils' cp and mv with progress bar)
+        nmap 192.168.0.0/24 ,g_ip4
+
+* if they are installed, use advcp utilities (coreutils' cp and mv with progress bar)
 
         cp -rv a /to/b                 # /usr/bin/acp -g " -rv a /to/b
         mv -v a /to/b                  # /usr/bin/amv -g " -v a /to/b
-  * misc global aliases
 
-        cat huge.txt L                 # cat huge.txt  | less
-        ./stdout+stderr.sh LL          # ./stdout+stderr.sh 2>&1 | less"
-        cat my.html G "<h3" G "id="    # cat my.html  | grep  "<h3"  | grep  "id="
-        ./run.daemon NUL               # ./run.daemon > /dev/null 2>&1
-        du -hs * SH                    # du -hs *  | sort -h
-        ls -1 LC                       # ls -1  | wc -l
+* misc global aliases
+
+        cat huge.txt ,l                # cat huge.txt  | less
+        ./stdout+stderr.sh ,la         # ./stdout+stderr.sh 2>&1 | less"
+        cat my.html ,g "<h3" ,g "id="  # cat my.html  | grep  "<h3"  | grep  "id="
+        cat ALLCAPS ,gi noncaps        # cat ALLCAPS  | grep --ignore-case  noncaps
+        cat my.html ,go "href=[^ ]*"   # cat my.html  | grep --only  "href=[^ ]*"
+        ./run.daemon ,nul              # ./run.daemon > /dev/null 2>&1
+        ls -1 ,s                       # ls -1  | sort
+        du -hs * ,sh                   # du -hs *  | sort --human-numeric-sort
+        ls -1 ,count                   # ls -1  | wc --lines
+        ls -1 ,cl                      # ls -1  | wc --lines
+        cat essay.txt ,cw              # cat essay.txt  | wc --words
+        cat my.bin ,cb                 # cat my.bin  | wc --bytes
 
 
 ## Requirments
