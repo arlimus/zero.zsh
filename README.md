@@ -52,7 +52,9 @@ Short reference:
         cat my.html ,go "href=[^ ]*"   # cat my.html  | grep --only  "href=[^ ]*"
         ./run.daemon ,nul              # ./run.daemon > /dev/null 2>&1
         ls -1 ,s                       # ls -1  | sort
+        cat lines ,sr                  # cat lines  | sort --reverse
         du -hs * ,sh                   # du -hs *  | sort --human-numeric-sort
+        du -hs * ,shr                  # du -hs *  | sort --human-numeric-sort --reverse
         ls -1 ,count                   # ls -1  | wc --lines
         ls -1 ,cl                      # ls -1  | wc --lines
         cat essay.txt ,cw              # cat essay.txt  | wc --words

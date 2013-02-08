@@ -109,8 +109,12 @@ alias -g ,nul='> /dev/null 2>&1'
 # use: ls -1 ,s
 alias -g ,s=' | sort '
 alias -g ,sort=' | sort '
+# use: cat lines ,sr
+alias -g ,sr=' | sort --reverse '
 # use: du -hs * ,sh
 alias -g ,sh=' | sort --human-numeric-sort '
+# use: du -hs * ,shr
+alias -g ,shr=' | sort --human-numeric-sort --reverse '
 # use: ls -1 ,count
 alias -g ,count=' | wc --lines '
 # use: ls -1 ,cl
