@@ -11,7 +11,7 @@ OHMY="$ZSH"
 [ ! -d "$OHMY" ] && echo "ee Could not find oh-my-zsh in '$OHMY'. Make sure you install 'oh-my-zsh' before trying to install this theme and plugin." && exit 0
 
 echo "-- copying files to oh-my-zsh in: '$OHMY'"
-cp -r -t "$OHMY" plugins themes
+cp -R plugins themes "$OHMY"
 echo "ok installed zero zsh successfully (theme: zero, plugins: zero)"
 
 [ -z "$(grep plugins ~/.zshrc | grep zero)" ] && echo "   please add zero to your plugins in ~/.zshrc to use it"
