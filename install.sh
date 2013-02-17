@@ -15,4 +15,4 @@ cp -R plugins themes "$OHMY"
 echo "ok installed zero zsh successfully (theme: zero, plugins: zero)"
 
 [ -z "$(grep plugins ~/.zshrc | grep zero)" ] && echo "   please add zero to your plugins in ~/.zshrc to use it"
-[ -z "$(grep ZSH_THEME ~/.zshrc | grep zero)" ] && echo "   please set your ZSH_THEME to zero in ~/.zshrc to use it"
+[ -z "$(grep ZSH_THEME ~/.zshrc | grep zero)" ] && echo "   please set your ZSH_THEME in ~/.zshrc to zero for the dark theme and zero-light for the light theme"
