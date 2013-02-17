@@ -7,7 +7,8 @@ Consists of a theme and a plugin. They can be used independently. Both have to b
 * simple clean design
 * support for git and hg repositories
 * 256-color theme
-* note: this currently only works with dark terminals (white text on black as in the screenshot)
+* set theme to `zero` if you have a dark terminal (like the screenshot)
+* set theme to `zero-light` if you have a light terminal
 
 ![Preview in themes/zero.zsh-theme.png](https://raw.github.com/arlimus/zero.zsh/master/themes/zero.zsh-theme.png)
 
