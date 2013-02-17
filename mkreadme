@@ -21,7 +21,9 @@ $galiases = Hash[
 # find all comments that match te documentation lines
 # ie: use:, usage:, desc:
 docs = lines.
+  # find all comments...
   scan(/(?<=\n# ).*/).join("\n").
+  # ... that match use: or usage: or desc:
   scan(/(?:use|usage|desc): [^\n]*(?:\n[ ]{4,}[^\n]+)*/)
 
 # generate the description string
@@ -74,9 +76,3 @@ end).flatten.compact
 File::write dst_file, 
   File::read(src_file).
   sub('PLUGIN_DOC', "\n"+md_docs.join("\n"))
-
-#pcregrep -iM "^(# usage:.*\n(#    .*\n)*)" plugins/zero/* | \
-#  sed 's/^# //' | \
-#  sed 's/usage: \(.*\)/\n* \1\n/' | \
-#  sed 's/^    [ ]*/        /' | \
-#  ruby -e "File::write 'README.md', File::read('README.md.raw').sub('PLUGIN_DOC', ARGF.read)"
