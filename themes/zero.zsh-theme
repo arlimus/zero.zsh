@@ -15,6 +15,8 @@ ZSH_THEME_PROMPT_CHAR_HG='☿'
 ZSH_THEME_PROMPT_COLOR="\033[38;05;250m"
 ZSH_THEME_PROMPT_SHOW_HOSTNAME='1'
 ZSH_THEME_PROMPT_CLASSIC_VIEW='1'
+ZSH_THEME_PROMPT_ROOT="$fg[red]"
+ZSH_THEME_PROMPT_USER="\033[38;05;075m"
 # Repo stuff
 ZSH_THEME_REPO_PROMPT_PREFIX=""
 ZSH_THEME_REPO_PROMPT_SUFFIX=""
@@ -73,7 +75,7 @@ patches: <patches|join( → )|pre_applied(%{$fg[yellow]%})|post_applied(%{$reset
 }
 
 function prompt_color {
-  echo -n "%{$reset_color\033[38;05;250m%}"
+  echo -n "%{$reset_color$ZSH_THEME_PROMPT_COLOR%}"
 }
 
 # modified from oh-my-zsh due to rearranging dirty before ref-name 
@@ -89,7 +91,7 @@ function repo {
 
 function prompt_char {
     # prompt color (root/user)
-    echo -n "%{%(#~$fg[red]~\033[38;05;075m)%}"
+    echo -n "%{%(#~${ZSH_THEME_PROMPT_ROOT}~${ZSH_THEME_PROMPT_USER})%}"
     
     # promp character for git (git rev-parse is nice and fast, so it's fine)
     is_repo_git && echo "$ZSH_THEME_PROMPT_CHAR_GIT" && return
