@@ -7,12 +7,16 @@ Consists of a theme and a plugin. They can be used independently. Both have to b
 * simple clean design
 * support for git and hg repositories
 * 256-color theme
-* set theme to `zero` if you have a dark terminal (like the screenshot)
-* set theme to `zero-light` if you have a light terminal
+
+Set theme to `zero` if you have a dark terminal:
 
 ![Preview in themes/zero.zsh-theme.png](https://raw.github.com/arlimus/zero.zsh/master/themes/zero.zsh-theme.png)
 
-references:
+Set theme to `zero-light` if you have a light terminal:
+
+![Preview in themes/zero.zsh-theme.png](https://raw.github.com/arlimus/zero.zsh/master/themes/zero-light.zsh-theme.png)
+
+References:
 
 * prose theme + guide (see: http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/)
 * the many preexisting themes (see: https://github.com/robbyrussell/oh-my-zsh/tree/master/themes)
