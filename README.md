@@ -63,7 +63,9 @@ Short reference:
         cat huge.txt ,l                # cat huge.txt  | less
         ./stdout+stderr.sh ,la         # ./stdout+stderr.sh 2>&1 | less"
         cat my.html ,g "<h3" ,g "id="  # cat my.html  | grep  "<h3"  | grep  "id="
+        cat all.log ,gv ignore_me      # cat all.log  | grep --invert-match  ignore_me
         cat ALLCAPS ,gi noncaps        # cat ALLCAPS  | grep --ignore-case  noncaps
+        cat CAPS.log ,giv ignore_me_noncaps # cat CAPS.log  | grep --ignore-case --invert-match  ignore_me_noncaps
         cat my.html ,go "href=[^ ]*"   # cat my.html  | grep --only  "href=[^ ]*"
         ./run.daemon ,nul              # ./run.daemon > /dev/null 2>&1
         ls -1 ,s                       # ls -1  | sort

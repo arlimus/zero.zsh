@@ -100,8 +100,12 @@ alias -g ,l=' | less '
 alias -g ,la="2>&1 | less"
 # use: cat my.html ,g "<h3" ,g "id="
 alias -g ,g=' | grep '
+# use: cat all.log ,gv ignore_me
+alias -g ,gv=' | grep --invert-match '
 # use: cat ALLCAPS ,gi noncaps
 alias -g ,gi=' | grep --ignore-case '
+# use: cat CAPS.log ,giv ignore_me_noncaps
+alias -g ,giv=' | grep --ignore-case --invert-match '
 # use: cat my.html ,go "href=[^ ]*"
 alias -g ,go=' | grep --only '
 # use: ./run.daemon ,nul
