@@ -147,3 +147,33 @@ unsetopt correct_all
 #           ~> new shell can access all shell's commands up to this point
 setopt inc_append_history
 unsetopt share_history
+
+
+# add zsh commands for switching themes on the fly
+
+# reload the current zsh config (and with it the theme)
+function zsh_reload_theme {
+  source "$HOME"/.zshrc
+}
+
+# load a zsh theme
+# $1 = name of the theme
+function zsh_load_theme {
+  theme=$1
+  if [ -n "$theme" ]; then
+    sed 's/ZSH_THEME=.*/ZSH_THEME="'$theme'"/' -i "$HOME"/.zshrc
+    zsh_reload_theme
+  else
+    echo "usage: zsh_load_theme <name>"
+  fi
+}
+
+# load zero for light background
+function light_theme {
+  zsh_load_theme "zero-light"
+}
+
+# load zero for dark backgrounds
+function dark_theme {
+  zsh_load_theme "zero"
+}
