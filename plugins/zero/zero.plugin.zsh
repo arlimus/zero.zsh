@@ -1,27 +1,5 @@
 # plugins for zero zsh
 
-# refactor simpler aliases
-# desc: misc shorthands
-# use: sizeof *
-alias l='ls'
-alias l1='ls -1'
-alias ll='ls -lha'
-alias TF='tail -f '
-# since i often screw this up
-alias sl=ls
-alias sizeof='du -hs '
-
-# quick directory traversal
-# use: ..
-#      .....
-alias ..='cd ../'
-alias ...='cd ../../'
-alias ....='cd ../../../'
-alias .....='cd ../../../../'
-alias ......='cd ../../../../../'
-alias .......='cd ../../../../../../'
-alias ........='cd ../../../../../../../'
-
 # desc: quickly go to root folder of git repository
 # usage: cdgit
 alias cdgit='git rev-parse 2>/dev/null && cd $(git rev-parse --show-toplevel)'
@@ -77,6 +55,32 @@ alias -g ,g_ip6=' | grep_ip6 '
 #      mv -v a /to/b
 [ -f "/usr/bin/acp" ] && alias cp="/usr/bin/acp -g "
 [ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
+
+# refactor simpler aliases
+# desc: simple shorthands
+# use: l
+alias l='ls'
+# use: l1
+alias l1='ls -1'
+# use: ll
+alias ll='ls -lha'
+alias TF='tail -f '
+# since i often screw this up
+# use: sl
+alias sl=ls
+alias sizeof='du -hs '
+
+# quick directory traversal
+# use: ..
+#      .....
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
+alias ......='cd ../../../../../'
+alias .......='cd ../../../../../../'
+alias ........='cd ../../../../../../../'
+
 
 # desc: misc global aliases
 # about their style:

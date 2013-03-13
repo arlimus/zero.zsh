@@ -38,12 +38,6 @@ Please see [plugins/zero/zero.plugin.zsh](zero.zsh/blob/master/plugins/zero/zero
 Short reference:
 
 
-* misc shorthands
-
-        sizeof *                       # du -hs  *
-        ..                             # cd ../
-        .....                          # cd ../../../../
-
 * quickly go to root folder of git repository
 
         cdgit
@@ -59,6 +53,15 @@ Short reference:
 
         cp -rv a /to/b                 # /usr/bin/acp -g " -rv a /to/b
         mv -v a /to/b                  # /usr/bin/amv -g " -v a /to/b
+
+* simple shorthands
+
+        l                              # ls
+        l1                             # ls -1
+        ll                             # ls -lha
+        sl                             # ls
+        ..                             # cd ../
+        .....                          # cd ../../../../
 
 * misc global aliases
 
