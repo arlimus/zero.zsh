@@ -12,7 +12,7 @@ OHMY="$ZSH"
 
 echo "-- copying files to oh-my-zsh in: '$OHMY'"
 cp -R plugins themes "$OHMY"
-echo "ok installed zero zsh successfully (theme: zero, plugins: zero)"
+echo "ok installed zero zsh successfully (theme: zero-dark/zero-light, plugins: zero)"
 
 [ -z "$(grep plugins ~/.zshrc | grep zero)" ] && echo "   please add zero to your plugins in ~/.zshrc to use it"
 [ -z "$(grep ZSH_THEME ~/.zshrc | grep 'zero-')" ] && echo -e "   please set your ZSH_THEME in ~/.zshrc to zero-dark for the dark theme\n   and zero-light for the light theme"
