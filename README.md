@@ -51,8 +51,8 @@ Short reference:
 
 * if they are installed, use advcp utilities (coreutils' cp and mv with progress bar)
 
-        cp -rv a /to/b                 # /usr/bin/acp -g " -rv a /to/b
-        mv -v a /to/b                  # /usr/bin/amv -g " -v a /to/b
+        cp -rv a /to/b                 # /usr/bin/acp -g  -rv a /to/b
+        mv -v a /to/b                  # /usr/bin/amv -g  -v a /to/b
 
 * simple shorthands
 

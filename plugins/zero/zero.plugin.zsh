@@ -53,8 +53,8 @@ alias -g ,g_ip6=' | grep_ip6 '
 #        (coreutils' cp and mv with progress bar)
 # use: cp -rv a /to/b
 #      mv -v a /to/b
-[ -f "/usr/bin/acp" ] && alias cp="/usr/bin/acp -g "
-[ -f "/usr/bin/amv" ] && alias mv="/usr/bin/amv -g "
+[ -f "/usr/bin/acp" ] && alias cp='/usr/bin/acp -g '
+[ -f "/usr/bin/amv" ] && alias mv='/usr/bin/amv -g '
 
 # refactor simpler aliases
 # desc: simple shorthands
