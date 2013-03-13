@@ -16,13 +16,15 @@ Set theme to `zero-light` if you have a light terminal:
 
 ![Preview in themes/zero-light.zsh-theme.png](https://raw.github.com/arlimus/zero.zsh/master/themes/zero-light.zsh-theme.png)
 
-If you want to quickly change the theme, use the plugin (see below). This will provide these commands:
+If you want to quickly change the theme, use the plugin (see below). This will provide shortcut commands for theming:
 
-    dark_theme        # sets the theme for dark terminals
-                      # (white text on black background)
-    light_theme       # sets the theme for light terminals
-                      # (black text on white background)
-    zsh_reload_theme  # quickly reload zsh
+    dark_theme        # sets the theme for dark terminals (white text on black background)
+    light_theme       # sets the theme for light terminals (black text on white background)
+
+There are also theme-related commands:
+
+    zsh_reload_theme        # quickly reload zsh
+    zsh_load_theme "zero"   # load a theme, eg this theme
 
 References:
 
