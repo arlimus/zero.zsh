@@ -63,24 +63,36 @@ Short reference:
         ..                             # cd ../
         .....                          # cd ../../../../
 
-* misc global aliases
+* global aliases for `less`
 
         cat huge.txt ,l                # cat huge.txt  | less
         ./stdout+stderr.sh ,la         # ./stdout+stderr.sh 2>&1 | less"
+
+* global aliases for `grep`
+
         cat my.html ,g "<h3" ,g "id="  # cat my.html  | grep  "<h3"  | grep  "id="
         cat all.log ,gv ignore_me      # cat all.log  | grep --invert-match  ignore_me
         cat ALLCAPS ,gi noncaps        # cat ALLCAPS  | grep --ignore-case  noncaps
         cat CAPS.log ,giv ignore       # cat CAPS.log  | grep --ignore-case --invert-match  ignore
         cat my.html ,go "href=[^ ]*"   # cat my.html  | grep --only  "href=[^ ]*"
-        ./run.daemon ,nul              # ./run.daemon > /dev/null 2>&1
+
+* global aliases for `sort`
+
         ls -1 ,s                       # ls -1  | sort
         cat lines ,sr                  # cat lines  | sort --reverse
         du -hs * ,sh                   # du -hs *  | sort --human-numeric-sort
         du -hs * ,shr                  # du -hs *  | sort --human-numeric-sort --reverse
+
+* global aliases for `wc` (counting)
+
         ls -1 ,count                   # ls -1  | wc --lines
         ls -1 ,cl                      # ls -1  | wc --lines
         cat essay.txt ,cw              # cat essay.txt  | wc --words
         cat my.bin ,cb                 # cat my.bin  | wc --bytes
+
+* other global aliases
+
+        ./run.daemon ,nul              # ./run.daemon > /dev/null 2>&1
 
 
 ## Requirments

@@ -82,7 +82,7 @@ alias .......='cd ../../../../../../'
 alias ........='cd ../../../../../../../'
 
 
-# desc: misc global aliases
+# misc global aliases
 # about their style:
 #   they all carry the ',[a-z]' style
 #   an alternative is usually '[A-Z]' instead
@@ -98,10 +98,14 @@ alias ........='cd ../../../../../../../'
 #                 paths
 #   ,[a-z]-style: doesn't conflict with anything as far as i know
 #                 it feels a bit strange at first, but you'll get used to it
+
+# desc: global aliases for `less`
 # use: cat huge.txt ,l
 alias -g ,l=' | less '
 # use: ./stdout+stderr.sh ,la
 alias -g ,la="2>&1 | less"
+
+# desc: global aliases for `grep`
 # use: cat my.html ,g "<h3" ,g "id="
 alias -g ,g=' | grep '
 # use: cat all.log ,gv ignore_me
@@ -112,8 +116,8 @@ alias -g ,gi=' | grep --ignore-case '
 alias -g ,giv=' | grep --ignore-case --invert-match '
 # use: cat my.html ,go "href=[^ ]*"
 alias -g ,go=' | grep --only '
-# use: ./run.daemon ,nul
-alias -g ,nul='> /dev/null 2>&1'
+
+# desc: global aliases for `sort`
 # use: ls -1 ,s
 alias -g ,s=' | sort '
 alias -g ,sort=' | sort '
@@ -123,6 +127,8 @@ alias -g ,sr=' | sort --reverse '
 alias -g ,sh=' | sort --human-numeric-sort '
 # use: du -hs * ,shr
 alias -g ,shr=' | sort --human-numeric-sort --reverse '
+
+# desc: global aliases for `wc` (counting)
 # use: ls -1 ,count
 alias -g ,count=' | wc --lines '
 # use: ls -1 ,cl
@@ -131,6 +137,10 @@ alias -g ,cl=' | wc --lines '
 alias -g ,cw=' | wc --words '
 # use: cat my.bin ,cb
 alias -g ,cb=' | wc --bytes '
+
+# desc: other global aliases
+# use: ./run.daemon ,nul
+alias -g ,nul='> /dev/null 2>&1'
 
 # alter some zsh options
 
