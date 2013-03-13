@@ -179,5 +179,5 @@ function light_theme {
 
 # load zero for dark backgrounds
 function dark_theme {
-  zsh_load_theme "zero"
+  zsh_load_theme "zero-dark"
 }
