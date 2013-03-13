@@ -104,7 +104,7 @@ alias -g ,g=' | grep '
 alias -g ,gv=' | grep --invert-match '
 # use: cat ALLCAPS ,gi noncaps
 alias -g ,gi=' | grep --ignore-case '
-# use: cat CAPS.log ,giv ignore_me_noncaps
+# use: cat CAPS.log ,giv ignore
 alias -g ,giv=' | grep --ignore-case --invert-match '
 # use: cat my.html ,go "href=[^ ]*"
 alias -g ,go=' | grep --only '
