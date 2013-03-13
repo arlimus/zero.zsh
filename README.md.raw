@@ -8,23 +8,23 @@ Consists of a theme and a plugin. They can be used independently. Both have to b
 * support for git and hg repositories
 * 256-color theme
 
-Set theme to `zero` if you have a dark terminal:
+Set theme to `zero-dark` if you have a dark terminal (white text on black background):
 
-![Preview in themes/zero.zsh-theme.png](https://raw.github.com/arlimus/zero.zsh/master/themes/zero.zsh-theme.png)
+![Preview in themes/zero.zsh-theme.png](https://raw.github.com/arlimus/zero.zsh/master/themes/zero-dark.zsh-theme.png)
 
-Set theme to `zero-light` if you have a light terminal:
+Set theme to `zero-light` if you have a light terminal (black text on white background):
 
 ![Preview in themes/zero-light.zsh-theme.png](https://raw.github.com/arlimus/zero.zsh/master/themes/zero-light.zsh-theme.png)
 
 If you want to quickly change the theme, use the plugin (see below). This will provide shortcut commands for theming:
 
-    dark_theme        # sets the theme for dark terminals (white text on black background)
-    light_theme       # sets the theme for light terminals (black text on white background)
+    dark_theme        # sets theme to zero-dark
+    light_theme       # sets theme to zero-light
 
 There are also theme-related commands:
 
-    zsh_reload_theme        # quickly reload zsh
-    zsh_load_theme "zero"   # load a theme, eg this theme
+    zsh_reload_theme             # quickly reload zsh
+    zsh_load_theme "zero-dark"   # load a theme, eg this theme
 
 References:
 
@@ -52,8 +52,8 @@ Installation in home directory of current user:
 
 Now edit `~/.zshrc` and:
 
-    # set zero as the theme
-    ZSH_THEME="zero"
+    # set zero-dark or zero-light as the theme
+    ZSH_THEME="zero-dark"
 
     # add zero to the list of plugins
     plugins=(git zero)
