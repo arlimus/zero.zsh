@@ -50,7 +50,7 @@ function git_prompt_my_info() {
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX$(parse_git_dirty)${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-function repo {
+function is_repo {
     is_repo_git && echo "${ZSH_THEME_REPO_PROMPT_PREFIX}$(git_time_since_commit)$(git_prompt_my_info)$(git_prompt_short_sha)${ZSH_THEME_REPO_PROMPT_SUFFIX}"
     is_repo_hg && echo "${ZSH_THEME_REPO_PROMPT_PREFIX}$(hg_prompt_info)${ZSH_THEME_REPO_PROMPT_SUFFIX}"
 }
@@ -92,10 +92,10 @@ local return_status="%{$fg[red]%}%(?..✘%? )"
 
 if [ "$ZSH_THEME_PROMPT_CLASSIC_VIEW" = "1" ]; then
     PROMPT="${ZSH_THEME_PROMPT_PATH}"' $(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
-    RPROMPT='${return_status}$(repo)%{$reset_color%}'
+    RPROMPT='${return_status}$(is_repo)%{$reset_color%}'
 else
     ZSH_THEME_REPO_PROMPT_SUFFIX=""
-    PROMPT='$(repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
+    PROMPT='$(is_repo)$(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '
     RPROMPT='${return_status}'"${ZSH_THEME_PROMPT_PATH}"
 fi
 
