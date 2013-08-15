@@ -42,6 +42,12 @@ Short reference:
 
         cdgit
 
+* ignorant ssh commands: ssh while ignoring host key checking. use these like you would use ssh, scp, and pssh. use with caution! (only recommended if you trust the network they reside in)
+
+        sshi name@destination
+        scpi file name@destination:
+        psshi -l name -h hosts date
+
 * grep all IPv4 and IPv6 addresses also works in global style via `,g_ip`, `,g_ip4`, `,g_ip6`
 
         grep_ip nmap_output.txt

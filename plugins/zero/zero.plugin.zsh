@@ -4,6 +4,14 @@
 # usage: cdgit
 alias cdgit='git rev-parse 2>/dev/null && cd $(git rev-parse --show-toplevel)'
 
+# desc: ignorant ssh commands: ssh while ignoring host key checking.
+#       use these like you would use ssh, scp, and pssh. use with caution! (only recommended if you trust the network they reside in)
+# usage: sshi name@destination
+#        scpi file name@destination:
+#        psshi -l name -h hosts date
+alias sshi='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null'
+alias scpi='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null'
+alias psshi='pssh -O StrictHostKeyChecking=no -O UserKnownHostsFile=/dev/null -O GlobalKnownHostsFile=/dev/null'
 
 # grep helpers
 # ipv6 regex by MichaelRushton,
