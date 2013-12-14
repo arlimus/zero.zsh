@@ -60,6 +60,7 @@ Now edit `~/.zshrc` and:
 
 Reload your zsh and you are ready to go.
 
+
 ## Configuration
 
 If you want to further edit the theme, have a look at `zero-dark.zsh-theme` or `zero-light.zsh-theme` respectively. You can quickly see all important configuration options.
@@ -75,3 +76,8 @@ and want:
 add this at the end of your `.zshrc`:
 
     export ZSH_THEME_PROMPT_CHAR_USER="$"
+
+
+## Issues / Suggestions
+
+I'd love to hear your opinion! Feel free to add issues, or contributions, or drop me a line.
