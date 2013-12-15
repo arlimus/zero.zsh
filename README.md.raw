@@ -46,11 +46,15 @@ PLUGIN_DOC
 
 ## Installation
 
-Installation in home directory of current user:
+    wget -O- https://raw.github.com/arlimus/zero.zsh/master/bootstrap.sh | sh -
 
+Alternatively:
+
+    git clone https://github.com/arlimus/zero.zsh.git
+    cd zero.zsh
     ./install.sh
 
-Now edit `~/.zshrc` and:
+Now enable it in your `~/.zshrc`:
 
     # set zero-dark or zero-light as the theme
     ZSH_THEME="zero-dark"
