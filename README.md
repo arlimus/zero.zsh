@@ -147,3 +147,5 @@ add this at the end of your `.zshrc`:
 ## Issues / Suggestions
 
 I'd love to hear your opinion! Feel free to add issues, or contributions, or drop me a line.
+
+License: Apache v2
