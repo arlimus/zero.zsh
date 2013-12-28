@@ -111,8 +111,8 @@ Short reference:
 Please run the installation of `oh-my-zsh` before installing zero.zsh. Afterwards run:
 
     wget -O- https://raw.github.com/arlimus/zero.zsh/master/bootstrap.sh | sh -
-    
-On Macs you may require to install wget. E.g. via `brew install wget` 
+
+On Macs you may require to install wget. E.g. via `brew install wget`
 
 Alternatively:
 
@@ -137,11 +137,11 @@ If you want to further edit the theme, have a look at `zero-dark.zsh-theme` or `
 
 For example, if you don't like:
 
-    hostname:path $>
+![before modification](https://raw.github.com/arlimus/zero.zsh/master/misc/mod-before.png)
 
 and want:
 
-    hostname:path ∅>
+![after modification](https://raw.github.com/arlimus/zero.zsh/master/misc/mod-after.png)
 
 add this at the end of your `.zshrc`:
 
