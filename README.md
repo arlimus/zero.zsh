@@ -104,11 +104,15 @@ Short reference:
 ## Requirments
 
 * zsh
-* oh-my-zsh
+* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 
 ## Installation
 
+Please run the installation of `oh-my-zsh` before installing zero.zsh. Afterwards run:
+
     wget -O- https://raw.github.com/arlimus/zero.zsh/master/bootstrap.sh | sh -
+    
+On Macs you may require to install wget. E.g. via `brew install wget` 
 
 Alternatively:
 
