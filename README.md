@@ -137,15 +137,15 @@ If you want to further edit the theme, have a look at `zero-dark.zsh-theme` or `
 
 For example, if you don't like:
 
-    hostname:path ∅>
+    hostname:path $>
 
 and want:
 
-    hostname:path $>
+    hostname:path ∅>
 
 add this at the end of your `.zshrc`:
 
-    export ZSH_THEME_PROMPT_CHAR_USER="$"
+    export ZSH_THEME_PROMPT_CHAR_USER="∅"
 
 
 ## Issues / Suggestions
