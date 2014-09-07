@@ -88,7 +88,7 @@ else
     ZSH_THEME_PROMPT_PATH='$(prompt_color)%30<..<%~%<<%{$reset_color%}'
 fi
 
-local return_status="%{$fg[red]%}%(?..✘%? )"
+local return_status="%{$fg[red]%}%(?..${ZSH_THEME_PROMPT_CHAR_ERROR}%? )"
 
 if [ "$ZSH_THEME_PROMPT_CLASSIC_VIEW" = "1" ]; then
     PROMPT="${ZSH_THEME_PROMPT_PATH}"' $(prompt_color)$(virtualenv_info)$(prompt_char)%{$fg_bold[magenta]%}>%{$reset_color%} '

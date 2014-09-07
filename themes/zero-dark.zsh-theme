@@ -8,6 +8,7 @@
 #   shipped with oh-my-zsh
 
 # Theme configuration
+ZSH_THEME_PROMPT_CHAR_ERROR='x'
 ZSH_THEME_PROMPT_CHAR_ROOT='#'
 ZSH_THEME_PROMPT_CHAR_USER='$'
 ZSH_THEME_PROMPT_CHAR_GIT='±'
