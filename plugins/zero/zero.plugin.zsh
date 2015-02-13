@@ -13,6 +13,10 @@ alias sshi='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o G
 alias scpi='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o GlobalKnownHostsFile=/dev/null'
 alias psshi='pssh -O StrictHostKeyChecking=no -O UserKnownHostsFile=/dev/null -O GlobalKnownHostsFile=/dev/null'
 
+# colorful grep, even when piping
+# see: http://stackoverflow.com/questions/2327191/preserve-colouring-after-piping-grep-to-grep
+alias grep="grep --color=always"
+
 # grep helpers
 # ipv6 regex by MichaelRushton,
 # http://stackoverflow.com/questions/53497/regular-expression-that-matches-valid-ipv6-addresses
