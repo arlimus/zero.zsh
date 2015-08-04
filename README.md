@@ -30,23 +30,7 @@ Now enable it in your `~/.zshrc`:
 Reload your zsh and you are ready to go.
 
 
-## Configuration
-
-If you want to further edit the theme, have a look at `zero-dark.zsh-theme` or `zero-light.zsh-theme` respectively. You can quickly see all important configuration options.
-
-For example, if you don't like:
-
-![before modification](https://raw.github.com/arlimus/zero.zsh/master/misc/mod-before.png)
-
-and want:
-
-![after modification](https://raw.github.com/arlimus/zero.zsh/master/misc/mod-after.png)
-
-add this at the end of your `.zshrc`:
-
-    export ZSH_THEME_PROMPT_CHAR_USER="∅"
-
-### theme
+## Theme
 
 * simple clean design
 * support for git and hg repositories
@@ -75,7 +59,23 @@ References:
 * prose theme + guide (see: http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/)
 * the many preexisting themes (see: https://github.com/robbyrussell/oh-my-zsh/tree/master/themes)
 
-### plugin
+### Configuration
+
+If you want to further edit the theme, have a look at `zero-dark.zsh-theme` or `zero-light.zsh-theme` respectively. You can quickly see all important configuration options.
+
+For example, if you don't like:
+
+![before modification](https://raw.github.com/arlimus/zero.zsh/master/misc/mod-before.png)
+
+and want:
+
+![after modification](https://raw.github.com/arlimus/zero.zsh/master/misc/mod-after.png)
+
+add this at the end of your `.zshrc`:
+
+    export ZSH_THEME_PROMPT_CHAR_USER="∅"
+
+## Plugin
 
 Please see [plugins/zero/zero.plugin.zsh](zero.zsh/blob/master/plugins/zero/zero.plugin.zsh). All changes are well documented.
 
