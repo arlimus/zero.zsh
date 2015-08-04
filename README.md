@@ -2,6 +2,50 @@
 
 Consists of a theme and a plugin. They can be used independently. Both have to be activated explicitly.
 
+## Requirments
+
+* zsh
+* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
+
+## Installation
+
+Please run the installation of `oh-my-zsh` before installing zero.zsh. Afterwards run:
+
+    curl https://raw.githubusercontent.com/arlh/master/bootstrap.sh | sh -
+
+Alternatively:
+
+    git clone https://github.com/arlimus/zero.zsh.git
+    cd zero.zsh
+    ./install.sh
+
+Now enable it in your `~/.zshrc`:
+
+    # set zero-dark or zero-light as the theme
+    ZSH_THEME="zero-dark"
+
+    # add zero to the list of plugins
+    plugins=(git zero)
+
+Reload your zsh and you are ready to go.
+
+
+## Configuration
+
+If you want to further edit the theme, have a look at `zero-dark.zsh-theme` or `zero-light.zsh-theme` respectively. You can quickly see all important configuration options.
+
+For example, if you don't like:
+
+![before modification](https://raw.github.com/arlimus/zero.zsh/master/misc/mod-before.png)
+
+and want:
+
+![after modification](https://raw.github.com/arlimus/zero.zsh/master/misc/mod-after.png)
+
+add this at the end of your `.zshrc`:
+
+    export ZSH_THEME_PROMPT_CHAR_USER="∅"
+
 ### theme
 
 * simple clean design
@@ -99,53 +143,6 @@ Short reference:
 * other global aliases
 
         ./run.daemon ,nul              # ./run.daemon > /dev/null 2>&1
-
-
-## Requirments
-
-* zsh
-* [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-
-## Installation
-
-Please run the installation of `oh-my-zsh` before installing zero.zsh. Afterwards run:
-
-    wget -O- https://raw.github.com/arlimus/zero.zsh/master/bootstrap.sh | sh -
-
-On Macs you may require to install wget. E.g. via `brew install wget`
-
-Alternatively:
-
-    git clone https://github.com/arlimus/zero.zsh.git
-    cd zero.zsh
-    ./install.sh
-
-Now enable it in your `~/.zshrc`:
-
-    # set zero-dark or zero-light as the theme
-    ZSH_THEME="zero-dark"
-
-    # add zero to the list of plugins
-    plugins=(git zero)
-
-Reload your zsh and you are ready to go.
-
-
-## Configuration
-
-If you want to further edit the theme, have a look at `zero-dark.zsh-theme` or `zero-light.zsh-theme` respectively. You can quickly see all important configuration options.
-
-For example, if you don't like:
-
-![before modification](https://raw.github.com/arlimus/zero.zsh/master/misc/mod-before.png)
-
-and want:
-
-![after modification](https://raw.github.com/arlimus/zero.zsh/master/misc/mod-after.png)
-
-add this at the end of your `.zshrc`:
-
-    export ZSH_THEME_PROMPT_CHAR_USER="∅"
 
 
 ## Issues / Suggestions
