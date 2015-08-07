@@ -11,7 +11,7 @@ Consists of a theme and a plugin. They can be used independently. Both have to b
 
 Please run the installation of `oh-my-zsh` before installing zero.zsh. Afterwards run:
 
-    curl https://raw.githubusercontent.com/arlh/master/bootstrap.sh | sh -
+    curl https://raw.githubusercontent.com/arlimus/zero.zsh/master/bootstrap.sh | sh -
 
 Alternatively:
 
