@@ -82,6 +82,12 @@ alias TF='tail -f '
 alias sl=ls
 alias sizeof='du -hs '
 
+# alias for exa
+# use: e
+alias e='exa --long --header --all --inode --extended'
+# use: et
+alias et='exa --long --header --all --inode --extended --tree'
+
 # quick directory traversal
 # use: ..
 #      .....
