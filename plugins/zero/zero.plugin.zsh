@@ -84,9 +84,13 @@ alias sizeof='du -hs '
 
 # alias for exa
 # use: e
-alias e='exa --long --header --all --inode --extended'
+alias e='exa --long --header --all --inode --extended --group'
 # use: et
-alias et='exa --long --header --all --inode --extended --tree'
+alias et='exa --long --header --all --inode --extended --group --tree'
+# use: eg
+alias eg='exa --long --header --all --inode --extended --group --git'
+# use: et
+alias etg='exa --long --header --all --inode --extended --group --git --tree'
 
 # quick directory traversal
 # use: ..
